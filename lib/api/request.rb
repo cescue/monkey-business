@@ -30,6 +30,8 @@ module MonkeyBusiness
         JSON.parse(response.body)
       elsif @http_method == :options
         response['Allow'].split(',').map { |x| x.downcase.to_sym  }
+      elsif @http_method == :head
+        response.to_hash
       end
     end
 
