@@ -5,7 +5,7 @@ Simple ruby client for version 3 of the SurveyMonkey API.
 
 Make sure your access token is stored an environment variable named `SURVEYMONKEY_ACCESS_TOKEN`.
 
-The client is sort of a DSL
+The client is sort of a DSL:
 
 ```
   client = MonkeyBusiness::API.new
