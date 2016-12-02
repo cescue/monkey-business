@@ -17,10 +17,10 @@ module MonkeyBusiness
       Surveys.new(self, options)
     end
 
-    def request(resource, options = {})
+    def request(resource_path, options = {})
       HttpRequest.request(
         @access_token, 
-        BASE_URI + resource.path,
+        BASE_URI + resource_path,
         options
       )
     end

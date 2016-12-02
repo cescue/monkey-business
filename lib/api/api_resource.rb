@@ -18,7 +18,7 @@ module MonkeyBusiness
     end
 
     def request
-      @api.request(self, @options)
+      @api.request(self.path, @options)
     end
   end
 end
