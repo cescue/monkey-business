@@ -1,5 +1,5 @@
 # monkey-business
-Simple ruby client for the surveymonkey api
+Simple ruby client for version 3 of the SurveyMonkey API.
 
 ## Usage
 
@@ -25,6 +25,8 @@ However, in order to actually make the API calls, you'll need to follow up with 
   client.surveys.request                # Sends the actual request (Defaults to GET)
   client.surveys.request(method: :post) # Sends a POST request
 ```
+
+Note: This project is in very early development. Many API methods are not yet implemented, and there may be breaking changes in the future.
 
 ## TODO
 
