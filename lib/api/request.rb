@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'net/http'
 
@@ -6,17 +8,14 @@ require_relative '../exceptions.rb'
 module MonkeyBusiness
   # Abstraction of an HTTP request sent to the surveymonkey API
   class HttpRequest
-
     def self.request(access_token, uri, options = {})
       @uri = URI(uri)
       @http_method = (options[:method] || :get).to_sym
       @options = options
 
-      if respond_to?(@http_method)
-        request = send(@http_method)
-      else
-        raise HttpMethodError.new("Unsupported HTTP method: #{@http_method}")
-      end
+      raise HttpMethodError.new(@http_method) unless respond_to?(@http_method)
+
+      request = send(@http_method)
 
       @http = Net::HTTP.new(@uri.host, @uri.port)
       @http.use_ssl = true
@@ -25,7 +24,6 @@ module MonkeyBusiness
       request['Content-Type'] = 'application/json'
 
       response = @http.request(request)
-
       JSON.parse(response.body)
     end
 

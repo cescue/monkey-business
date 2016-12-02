@@ -4,10 +4,10 @@ require_relative 'api/request.rb'
 require_relative 'api/surveys.rb'
 
 module MonkeyBusiness
-
   API_VERSION = 'v3'
   BASE_URI = "https://api.surveymonkey.net/#{API_VERSION}"
 
+  # This is the class the end-user should be interacting with.
   class API
     def initialize
       @access_token = ENV['SURVEYMONKEY_ACCESS_TOKEN']
