@@ -2,6 +2,9 @@
 
 require_relative 'api/request.rb'
 require_relative 'api/surveys.rb'
+require_relative 'api/survey_categories.rb'
+require_relative 'api/survey_templates.rb'
+require_relative 'api/users.rb'
 
 module MonkeyBusiness
   API_VERSION = 'v3'
@@ -15,6 +18,18 @@ module MonkeyBusiness
 
     def surveys(options = {})
       Surveys.new(self, options)
+    end
+
+    def survey_categories(options = {})
+      SurveyCategories.new(self, options)
+    end
+
+    def survey_templates(options = {})
+      SurveyTemplates.new(self, options)
+    end
+
+    def users(options = {})
+      Users.new(self, options)
     end
 
     def request(resource_path, options = {})
