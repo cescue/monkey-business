@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'dotenv'
+require 'pry'
+
+require_relative '../lib/monkey_business.rb'
+
+Dotenv.load
+Pry.start
