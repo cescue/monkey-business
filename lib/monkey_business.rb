@@ -1,7 +1,7 @@
+# frozen_string_literal: true
+
 require_relative 'api/request.rb'
-
 require_relative 'api/surveys.rb'
-
 
 module MonkeyBusiness
 
@@ -19,7 +19,7 @@ module MonkeyBusiness
 
     def request(resource_path, options = {})
       HttpRequest.request(
-        @access_token, 
+        @access_token,
         BASE_URI + resource_path,
         options
       )

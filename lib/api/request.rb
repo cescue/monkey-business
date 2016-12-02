@@ -10,6 +10,7 @@ module MonkeyBusiness
     def self.request(access_token, uri, options = {})
       @uri = URI(uri)
       @http_method = (options[:method] || :get).to_sym
+      @options = options
 
       if respond_to?(@http_method)
         request = send(@http_method)
@@ -23,14 +24,13 @@ module MonkeyBusiness
       request['Authorization'] = "bearer #{access_token}"
       request['Content-Type'] = 'application/json'
 
-      puts uri
       response = @http.request(request)
 
       JSON.parse(response.body)
     end
 
-    def self.get(options = {})
-      params = options.map { |k, v| "#{k}=#{v}" }.join('&')
+    def self.get
+      params = @options.map { |k, v| "#{k}=#{v}" }.join('&')
       Net::HTTP::Get.new("#{@uri.request_uri}?#{params}")
     end
 
