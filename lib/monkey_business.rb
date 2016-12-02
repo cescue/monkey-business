@@ -14,14 +14,15 @@ module MonkeyBusiness
     end
 
     def surveys(options = {})
-      resource = Surveys.new(self, options)
+      Surveys.new(self, options)
+    end
 
+    def request(resource, options = {})
       HttpRequest.request(
         @access_token, 
         BASE_URI + resource.path,
         options
       )
-
     end
   end
 end

@@ -4,7 +4,9 @@ module MonkeyBusiness
     attr_accessor :path
 
     def initialize(api, options = {}, path_prefix = nil)
+      @api = api
       @id = options.delete(:id)
+      @options = options
 
       resource_name = self.class.name
                       .gsub(/.+::/, '')
@@ -13,6 +15,10 @@ module MonkeyBusiness
 
       @path = "#{path_prefix}/#{resource_name}"
       @path += "/#{@id}" if @id
+    end
+
+    def request
+      @api.request(self, @options)
     end
   end
 end
