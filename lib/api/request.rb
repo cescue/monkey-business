@@ -10,7 +10,8 @@ module MonkeyBusiness
   class HttpRequest
     def self.request(access_token, uri, options = {})
       @uri = URI(uri)
-      @http_method = (options[:method] || :get).to_sym
+
+      @http_method = options[:method] ? options.delete(:method).to_sym : :get
       @options = options
 
       raise HttpMethodError.new(@http_method) unless respond_to?(@http_method)
@@ -24,7 +25,12 @@ module MonkeyBusiness
       request['Content-Type'] = 'application/json'
 
       response = @http.request(request)
-      JSON.parse(response.body)
+
+      if [:get, :post].include?(@http_method)
+        JSON.parse(response.body)
+      elsif @http_method == :options
+        response['Allow'].split(',').map { |x| x.downcase.to_sym  }
+      end
     end
 
     def self.get
@@ -37,11 +43,11 @@ module MonkeyBusiness
     end
 
     def self.head(options = {})
-      raise NotImplementedError.new
+      Net::HTTP::Head.new(@uri.request_uri)
     end
 
     def self.options(options = {})
-      raise NotImplementedError.new
+      Net::HTTP::Options.new(@uri.request_uri)
     end
   end
 end
