@@ -9,6 +9,7 @@ require_relative 'api/groups.rb'
 require_relative 'api/contact_lists.rb'
 require_relative 'api/contacts.rb'
 require_relative 'api/contact_fields.rb'
+require_relative 'api/webhooks.rb'
 
 module MonkeyBusiness
   API_VERSION = 'v3'
@@ -54,6 +55,10 @@ module MonkeyBusiness
 
     def collectors(options = {})
       Collectors.new(self, options)
+    end
+
+    def webhooks(options = {})
+      Webhooks.new(self, options)
     end
 
     def request(resource_path, options = {})
