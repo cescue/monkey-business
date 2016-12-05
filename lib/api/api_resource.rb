@@ -30,8 +30,7 @@ module MonkeyBusiness
 
     def fail_without_id
       return if @id
-      raise MonkeyBusiness::ApiMethodError.new(
-        <<~MESSAGE
+      raise MonkeyBusiness::ApiMethodError, <<~MESSAGE
           ID must be provided for the following method:
             #{caller_locations(1, 1)[0].label}
           Expected:
@@ -39,7 +38,6 @@ module MonkeyBusiness
           Received:
             #{@path}
         MESSAGE
-      )
     end
   end
 end
