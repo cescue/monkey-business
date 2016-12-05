@@ -1,6 +1,12 @@
 # monkey-business
 Simple ruby client for version 3 of the SurveyMonkey API.
 
+## Installation
+
+```
+gem install monkey-business
+```
+
 ## Usage
 
 Make sure your access token is stored an environment variable named `SURVEYMONKEY_ACCESS_TOKEN`.
@@ -8,6 +14,8 @@ Make sure your access token is stored an environment variable named `SURVEYMONKE
 The client is sort of a DSL:
 
 ```
+  require 'monkey_business'
+
   client = MonkeyBusiness::API.new
 
   client.surveys                      # /surveys
