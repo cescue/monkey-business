@@ -45,6 +45,5 @@ Note: This project is in very early development. Many API methods are not yet im
 
 ## TODO
 
-  * Implement all API methods
   * Make usage more intuitive
   * Better documentation
