@@ -45,6 +45,26 @@ module MonkeyBusiness
       @http.request(request)
     end
 
+    def self.put
+      request = Net::HTTP::Put.new(@uri.request_uri)
+      request.body = @options.to_json
+
+      request['Authorization'] = "bearer #{@access_token}"
+      request['Content-Type'] = 'application/json'
+
+      @http.request(request)
+    end
+
+    def self.patch
+      request = Net::HTTP::Patch.new(@uri.request_uri)
+      request.body = @options.to_json
+
+      request['Authorization'] = "bearer #{@access_token}"
+      request['Content-Type'] = 'application/json'
+
+      @http.request(request)
+    end
+
     def self.delete
       request = Net::HTTP::Delete.new(@uri.request_uri)
 
