@@ -52,6 +52,10 @@ module MonkeyBusiness
       ContactFields.new(self, options)
     end
 
+    def collectors(options = {})
+      Collectors.new(self, options)
+    end
+
     def request(resource_path, options = {})
       HttpRequest.request(
         @access_token,
