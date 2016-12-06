@@ -18,10 +18,10 @@ The client is sort of a DSL:
 
   client = MonkeyBusiness::API.new
 
-  client.surveys                      # /surveys
-  client.surveys(id: 12)              # /surveys/12
-  client.surveys(id: 12).responses    # /surveys/12/responses
-  client.surveys(id: 12).responses(5) # /surveys/12/responses/5
+  client.surveys                          # /surveys
+  client.surveys(id: 12)                  # /surveys/12
+  client.surveys(id: 12).responses        # /surveys/12/responses
+  client.surveys(id: 12).responses(id: 5) # /surveys/12/responses/5
 
   # ... et cetera, you get the idea.
 ```
