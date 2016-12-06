@@ -24,7 +24,7 @@ module MonkeyBusiness
     end
 
     def self.get
-      params = @options.map { |k, v| "#{k}=#{v}" }.join('&')
+      params = @options.map { |k, v| "#{k}=#{URI.encode(v)}" }.join('&')
 
       request = Net::HTTP::Get.new("#{@uri.request_uri}?#{params}")
       request['Authorization'] = "bearer #{@access_token}"

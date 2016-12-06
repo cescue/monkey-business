@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'monkey-business'
-  s.version     = '1.0.3'
+  s.version     = '1.0.4'
   s.date        = '2016-12-05'
 
   s.authors     = ['Chris Escue']
