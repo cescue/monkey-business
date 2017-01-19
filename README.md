@@ -39,11 +39,3 @@ URL parameters can be specified via an options hash (POST is planned but not yet
 ```
   client.surveys(per_page: 100, page: 2).request # /surveys?per_page=100&page=2
 ```
-
-
-Note: This project is in very early development. Many API methods are not yet implemented, and there may be breaking changes in the future.
-
-## TODO
-
-  * Make usage more intuitive
-  * Better documentation
