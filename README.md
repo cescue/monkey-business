@@ -26,7 +26,7 @@ The client is sort of a DSL:
   # ... et cetera, you get the idea.
 ```
 
-However, in order to actually make the API calls, you'll need to follow up with a call to the `request` method (ideally this will change in the future):
+The above examples will only _generate_ the requests.  In order to send them, you'll need to follow up with a call to the `request` method:
 
 ```
   client.surveys                        # Returns a MonkeyBusiness::Surveys object
@@ -34,7 +34,7 @@ However, in order to actually make the API calls, you'll need to follow up with 
   client.surveys.request(method: :post) # Sends a POST request
 ```
 
-URL parameters can be specified via an options hash (POST is planned but not yet supported):
+URL parameters can be specified via an options hash:
 
 ```
   client.surveys(per_page: 100, page: 2).request # /surveys?per_page=100&page=2
