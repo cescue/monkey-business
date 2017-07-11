@@ -13,7 +13,7 @@ Make sure your access token is stored an environment variable named `SURVEYMONKE
 
 The client is sort of a DSL:
 
-```
+```ruby
   require 'monkey_business'
 
   client = MonkeyBusiness::API.new
@@ -28,7 +28,7 @@ The client is sort of a DSL:
 
 The above examples will only _generate_ the requests.  In order to send them, you'll need to follow up with a call to the `request` method:
 
-```
+```ruby
   client.surveys                        # Returns a MonkeyBusiness::Surveys object
   client.surveys.request                # Sends the actual request (Defaults to GET)
   client.surveys.request(method: :post) # Sends a POST request
@@ -36,6 +36,6 @@ The above examples will only _generate_ the requests.  In order to send them, yo
 
 URL parameters can be specified via an options hash:
 
-```
+```ruby
   client.surveys(per_page: 100, page: 2).request # /surveys?per_page=100&page=2
 ```
