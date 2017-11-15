@@ -21,6 +21,7 @@ module MonkeyBusiness
   class API
     def initialize
       @access_token = ENV['SURVEYMONKEY_ACCESS_TOKEN']
+      @api_key = ENV['SURVEYMONKEY_API_KEY']
     end
 
     def surveys(options = {})
@@ -74,9 +75,24 @@ module MonkeyBusiness
     def request(resource_path, options = {})
       HttpRequest.request(
         @access_token,
-        BASE_URI + resource_path,
+        format_uri(resource_path),
         options
       )
+    end
+
+    private
+
+    def format_uri(resource_path)
+      uri = URI(BASE_URI + resource_path)
+      uri.query = encode_query_params(uri.query)
+      uri.to_s
+    end
+
+    def encode_query_params(query)
+      extra_params = {}
+      extra_params[:api_key] = @api_key if @api_key
+      new_params = URI.decode_www_form(query.to_s).concat(extra_params.to_a)
+      URI.encode_www_form(new_params)
     end
   end
 end
